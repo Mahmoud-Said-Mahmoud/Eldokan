@@ -1,0 +1,56 @@
+import ProductCard from '@/components/productCard/ProductCard'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import type { HomeProduct, HomeSection } from '@/types/home'
+
+function matchesSection(section: HomeSection, terms: string[]) {
+  const label = `${section.id} ${section.title ?? ''}`.toLocaleLowerCase()
+  return terms.some((term) => label.includes(term))
+}
+
+function sectionEyebrow(section: HomeSection) {
+  if (matchesSection(section, ['deal', 'offer', 'discount'])) return 'Limited time offers'
+  if (matchesSection(section, ['best'])) return 'Customer favorites'
+  if (matchesSection(section, ['new', 'arrival'])) return 'Just added'
+  return 'Picked for you'
+}
+
+export default function HomeProductCarousel({
+  section,
+  firstProductSectionId,
+  eyebrow,
+}: {
+  section: HomeSection
+  firstProductSectionId?: string
+  eyebrow?: string
+}) {
+  const products = (section.items as HomeProduct[]).filter((product) => product.stock?.status === 'in_stock')
+  if (products.length === 0) return null
+
+  return (
+    <section id={section.id === firstProductSectionId ? 'products' : undefined} className="space-y-4 scroll-mt-44" aria-labelledby={`${section.id}-title`}>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a66d00]">{eyebrow || sectionEyebrow(section)}</p>
+          <h2 id={`${section.id}-title`} className="mt-1 text-xl font-bold text-gray-900 sm:text-2xl">{section.title}</h2>
+        </div>
+        {products.length > 5 && <span className="hidden text-sm text-gray-500 sm:inline">Scroll to explore</span>}
+      </div>
+      <Carousel opts={{ align: 'start' }} className="w-full">
+        <CarouselContent className="-ml-3">
+          {products.map((product, index) => (
+            <CarouselItem key={product.id ?? index} className="basis-[68%] pl-3 sm:basis-[42%] md:basis-[30%] lg:basis-[22%] xl:basis-[18%]">
+              <ProductCard product={product} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {products.length > 5 && <><CarouselPrevious /><CarouselNext /></>}
+      </Carousel>
+    </section>
+  )
+}
