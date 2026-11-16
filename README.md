@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Eldokan Storefront (v1)
 
-## Getting Started
+The first version of the **Eldokan** storefront UI, built with Next.js and TypeScript. It laid the groundwork for the home page, product pages and reusable components.
 
-First, run the development server:
+> The current version of the store lives in **[EldokanFinal](https://github.com/Mahmoud-Said-Mahmoud/EldokanFinal)** · live at https://eldokan-final.vercel.app
+
+## What's inside
+
+- Home page sections: banners, stories, daily offers, category shortcuts and shelves, brand and seller spotlights, budget filter, recently viewed
+- Product page with image slider, details, offers and description
+- Category, brand, seller and search pages with loading states
+- Reusable UI built on shadcn/ui (cards, carousel, breadcrumb, navigation menu, skeletons)
+- Service layer for products, categories, brands, sellers and search
+
+## Tech stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS · shadcn/ui · Embla Carousel · Lottie
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Mahmoud Amer](https://www.linkedin.com/in/mahmoud-amer~)
